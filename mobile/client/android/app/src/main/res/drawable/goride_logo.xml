@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- Main D shape with three horizontal lines -->
+    <!-- D shape (circular arc) -->
+    <path
+        android:pathData="M60,20 C80,20 100,40 100,60 C100,80 80,100 60,100 L60,20 Z"
+        android:fillColor="#FFFFFF"
+        android:strokeWidth="0" />
+    <!-- Inner circle -->
+    <path
+        android:pathData="M60,40 C70,40 80,50 80,60 C80,70 70,80 60,80 C50,80 40,70 40,60 C40,50 50,40 60,40 Z"
+        android:fillColor="#FFFFFF" />
+    <!-- Three horizontal lines extending left -->
+    <path
+        android:pathData="M40,50 L20,50"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLinecap="round" />
+    <path
+        android:pathData="M40,60 L15,60"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLinecap="round" />
+    <path
+        android:pathData="M40,70 L10,70"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLinecap="round" />
+    <!-- Small target icon below -->
+    <path
+        android:pathData="M50,105 C55,105 60,110 60,115 C60,120 55,125 50,125 C45,125 40,120 40,115 C40,110 45,105 50,105 Z"
+        android:fillColor="#2196F3" />
+    <path
+        android:pathData="M50,115 L50,115 M45,115 L55,115 M50,110 L50,120"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2" />
+</vector>
+
