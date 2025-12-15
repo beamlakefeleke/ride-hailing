@@ -1,0 +1,44 @@
+{
+	"id": "ourride-environment",
+	"name": "OurRide - Local Development",
+	"values": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "refresh_token",
+			"value": "",
+			"type": "secret",
+			"enabled": true
+		},
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "test_phone_number",
+			"value": "1234567890",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "test_country_code",
+			"value": "+1",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment"
+}
+

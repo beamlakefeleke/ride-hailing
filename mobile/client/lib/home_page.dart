@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'destination_screen.dart';
+import 'features/location/presentation/pages/destination_page.dart';
+import 'features/activity/presentation/pages/activity_page.dart';
+import 'features/account/presentation/pages/account_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -68,6 +70,22 @@ class _MyHomePageState extends State<MyHomePage> {
     final size = MediaQuery.of(context).size;
     double clampDouble(double value, double min, double max) =>
         value.clamp(min, max).toDouble();
+
+    // Show Activity screen when Activity tab is selected
+    if (_selectedBottomNavIndex == 2) {
+      return Scaffold(
+        body: const ActivityPage(),
+        bottomNavigationBar: _buildBottomNavigation(size, clampDouble),
+      );
+    }
+
+    // Show Account screen when Account tab is selected
+    if (_selectedBottomNavIndex == 3) {
+      return Scaffold(
+        body: const AccountPage(),
+        bottomNavigationBar: _buildBottomNavigation(size, clampDouble),
+      );
+    }
 
     return Scaffold(
       body: Stack(
@@ -259,7 +277,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       context: context,
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
-                      builder: (context) => const DestinationScreen(),
+                      builder: (context) => const DestinationPage(),
                     );
                   },
                   child: Container(

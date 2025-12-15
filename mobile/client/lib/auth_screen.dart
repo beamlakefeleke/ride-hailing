@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'signup_screen.dart';
-import 'signin_screen.dart';
+import 'features/auth/presentation/pages/signup_page.dart';
+import 'features/auth/presentation/pages/signin_page.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -150,7 +150,7 @@ class AuthScreen extends StatelessWidget {
                             // Navigate to Sign Up screen
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (_) => const SignUpScreen(),
+                                builder: (_) => const SignUpPage(),
                               ),
                             );
                           },
@@ -184,7 +184,7 @@ class AuthScreen extends StatelessWidget {
                             // Navigate to Sign In screen
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                builder: (_) => const SignInScreen(),
+                                builder: (_) => const SignInPage(),
                               ),
                             );
                           },

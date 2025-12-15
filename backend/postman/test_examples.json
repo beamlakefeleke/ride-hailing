@@ -1,0 +1,248 @@
+{
+  "description": "Example request/response pairs for OurRide API",
+  "examples": {
+    "send_otp": {
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/auth/send-otp",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "phoneNumber": "1234567890",
+          "countryCode": "+1"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "message": "OTP sent successfully",
+          "expiresIn": 300,
+          "canResend": false
+        }
+      }
+    },
+    "verify_otp_signin": {
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/auth/verify-otp",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "phoneNumber": "1234567890",
+          "countryCode": "+1",
+          "otp": "1234",
+          "isSignUp": false
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "tokenType": "Bearer",
+          "expiresIn": 86400,
+          "user": {
+            "id": 1,
+            "phoneNumber": "+11234567890",
+            "email": "user@example.com",
+            "fullName": "John Doe",
+            "phoneVerified": true,
+            "emailVerified": false
+          },
+          "profileCompleted": true,
+          "requiresProfileCompletion": false
+        }
+      }
+    },
+    "verify_otp_signup": {
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/auth/verify-otp",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "phoneNumber": "9876543210",
+          "countryCode": "+1",
+          "otp": "5678",
+          "isSignUp": true
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "tokenType": "Bearer",
+          "expiresIn": 86400,
+          "user": {
+            "id": 2,
+            "phoneNumber": "+19876543210",
+            "phoneVerified": true
+          },
+          "profileCompleted": false,
+          "requiresProfileCompletion": true
+        }
+      }
+    },
+    "complete_profile": {
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/auth/complete-profile",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer {access_token}"
+        },
+        "body": {
+          "fullName": "John Doe",
+          "email": "john.doe@example.com",
+          "phoneNumber": "1234567890",
+          "countryCode": "+1",
+          "gender": "MALE",
+          "dateOfBirth": "1990-01-15"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "user": {
+            "id": 2,
+            "phoneNumber": "+11234567890",
+            "email": "john.doe@example.com",
+            "fullName": "John Doe",
+            "phoneVerified": true,
+            "emailVerified": false
+          },
+          "profileCompleted": true,
+          "requiresProfileCompletion": false
+        }
+      }
+    },
+    "social_login_google": {
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/auth/social-login",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "provider": "GOOGLE",
+          "providerId": "google_user_12345",
+          "email": "user@gmail.com",
+          "fullName": "John Doe",
+          "profileImageUrl": "https://example.com/profile.jpg"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "user": {
+            "id": 3,
+            "phoneNumber": null,
+            "email": "user@gmail.com",
+            "fullName": "John Doe",
+            "phoneVerified": false,
+            "emailVerified": true
+          },
+          "profileCompleted": true,
+          "requiresProfileCompletion": false
+        }
+      }
+    },
+    "refresh_token": {
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/auth/refresh-token",
+        "headers": {
+          "Authorization": "Bearer {refresh_token}"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "accessToken": "new_access_token...",
+          "refreshToken": "new_refresh_token...",
+          "tokenType": "Bearer",
+          "expiresIn": 86400
+        }
+      }
+    },
+    "check_phone": {
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/api/auth/check-phone?phoneNumber=1234567890&countryCode=+1"
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "exists": false,
+          "message": "Phone number available"
+        }
+      }
+    },
+    "error_examples": {
+      "invalid_otp": {
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8080/api/auth/verify-otp",
+          "body": {
+            "phoneNumber": "1234567890",
+            "countryCode": "+1",
+            "otp": "9999",
+            "isSignUp": false
+          }
+        },
+        "response": {
+          "status": 400,
+          "body": {
+            "success": false,
+            "message": "Invalid or expired OTP"
+          }
+        }
+      },
+      "validation_error": {
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8080/api/auth/send-otp",
+          "body": {
+            "phoneNumber": "",
+            "countryCode": "+1"
+          }
+        },
+        "response": {
+          "status": 400,
+          "body": {
+            "success": false,
+            "message": "Validation failed",
+            "errors": {
+              "phoneNumber": "Phone number is required"
+            }
+          }
+        }
+      },
+      "unauthorized": {
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8080/api/auth/complete-profile",
+          "headers": {
+            "Authorization": "Bearer invalid_token"
+          }
+        },
+        "response": {
+          "status": 401,
+          "body": {
+            "success": false,
+            "message": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
+}
+

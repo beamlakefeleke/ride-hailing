@@ -38,6 +38,33 @@ dependencies:
   google_maps_flutter: ^2.9.0
   google_maps_flutter_web: ^0.5.10
   geolocator: ^13.0.2
+  
+  # State Management
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  
+  # Network
+  http: ^1.2.0
+  dio: ^5.4.0
+  
+  # Dependency Injection
+  get_it: ^7.6.4
+  injectable: ^2.4.1
+  
+  # Local Storage
+  shared_preferences: ^2.2.2
+  
+  # Connectivity
+  connectivity_plus: ^5.0.2
+  
+  # JSON Serialization
+  json_annotation: ^4.8.1
+  
+  # Freezed for immutable classes
+  freezed_annotation: ^2.4.1
+  
+  # Functional programming
+  dartz: ^0.10.1
 
 
 dev_dependencies:
@@ -50,6 +77,12 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  
+  # Code Generation
+  build_runner: ^2.4.8
+  injectable_generator: ^2.4.1
+  json_serializable: ^6.7.1
+  freezed: ^2.4.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
